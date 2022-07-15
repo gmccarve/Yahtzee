@@ -39,6 +39,8 @@ class MainWindow(QWidget):
 
         self.initUI()
 
+        self.num_rolls = 0
+
 
 
 
@@ -387,6 +389,8 @@ class MainWindow(QWidget):
         self.lower_tot = 0
         self.upper_tot = 0
 
+        self.num_rolls = 0
+
 
     def NewRoll(self):
         for j, lab in enumerate([self.dice1, self.dice2, self.dice3, self.dice4, self.dice5]):
@@ -411,6 +415,12 @@ class MainWindow(QWidget):
         self.roll_btn.setEnabled(True)
 
         self.number_of_rolls = 0
+
+        self.num_rolls += 1
+
+        if self.num_rolls > 12:
+            self.roll_btn.setEnabled(False)
+            self.roll_btn.setText("Game\nOver")
 
     def UpdateScore(self):
 
